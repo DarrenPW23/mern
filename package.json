@@ -2,9 +2,10 @@
 	"name": "mern-forms",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "webpack.config.js",
 	"scripts": {
-		"start": "nodemon --watch server --exec babel-node -- server/index.js"
+		"start": "nodemon --watch server --exec babel-node -- server/index.js",
+		"client": "webpack-dev-server --progress"
 	},
 	"keywords": [],
 	"author": "",
@@ -15,20 +16,15 @@
 		"react-dom": "^17.0.1"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.12.10",
 		"@babel/core": "^7.12.10",
 		"@babel/node": "^7.12.10",
 		"@babel/preset-env": "^7.12.11",
 		"@babel/preset-react": "^7.12.10",
 		"babel-loader": "^8.2.2",
 		"nodemon": "^2.0.7",
-		"webpack": "^5.16.0",
-		"webpack-dev-middleware": "^4.1.0"
-	},
-	"babel": {
-		"presets": [
-			"@babel/preset-env",
-			"@babel/preset-react"
-		]
+		"webpack": "^5.18.0",
+		"webpack-cli": "^4.4.0",
+		"webpack-dev-middleware": "^4.1.0",
+		"webpack-dev-server": "^3.11.2"
 	}
 }
