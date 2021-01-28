@@ -1,4 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
+import App from './Components/App.jsx'
 
-render(<h1>This is a MERN</h1>, document.getElementById('app'))
+render(<App />, document.getElementById('app'))
