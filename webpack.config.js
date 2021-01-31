@@ -1,14 +1,13 @@
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require('webpack');
 
 module.exports = {
-    devServer: {
-        historyApiFallback: true,
-        contentBase: path.resolve(__dirname, './client')
-    },
-    entry: path.resolve(__dirname, './client/index.js'),
+    entry: [
+        path.resolve(__dirname, './client/index.js')
+    ],
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './client'),
         filename: 'bundle.js'
     },
     module: {
@@ -28,7 +27,11 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        contentBase: path.resolve(__dirname, './client')
+    },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({ filename: "bundle.css" })
-    ],
+    ]
 }

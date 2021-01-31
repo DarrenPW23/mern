@@ -76,8 +76,6 @@ router.post('/register', (req, res) => {
                                     user.ID = result.insertID
                                     user.role = roles.find(ro => ro.name == role)
 
-                                    console.log(user)
-
                                     return res.json(returner({
                                         success: true,
                                         message: 'Registration successful.',

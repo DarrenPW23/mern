@@ -9,12 +9,7 @@ var fields = [
     { name: 'role', type: 'INT', length: 11, default: 'user' }
 ]
 
-var fk = [
-    { field: 'role', table: 'roles', belongsTo: 'ID' }
-]
-
 User.table = 'users'
-User.fk = User.fk.concat(fk)
 User.fields = User.fields.concat(fields)
 
 module.exports = User

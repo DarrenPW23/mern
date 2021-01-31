@@ -1,6 +1,5 @@
 const con = require('../connect')
 const { SQLifyDate } = require('../utils/sql')
-const { isEmpty, isNull } = require('lodash')
 
 let BaseTable = class {
     constructor(table = '', fk = []) {
