@@ -7,13 +7,13 @@ module.exports = {
         path.resolve(__dirname, './client/index.js')
     ],
     output: {
-        path: path.resolve(__dirname, './client'),
+        path: path.resolve(__dirname, './public'),
         filename: 'bundle.js'
     },
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
             },
@@ -28,6 +28,8 @@ module.exports = {
         ]
     },
     devServer: {
+        port: process.env.PORT || 3010,
+        watchContentBase: true,
         contentBase: path.resolve(__dirname, './client')
     },
     plugins: [
