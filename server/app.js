@@ -15,16 +15,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 if (!PRODUCTION) { // For Development. Compile on-the-go
-    const webpack = require('webpack')
-    const webpackHotMiddleware = require('webpack-hot-middleware')
-    const webpackDevMiddleware = require('webpack-dev-middleware')
-
     let webpackConfig = require('../webpack.config')
-    webpackConfig.mode = 'development'
 
-    const compiler = webpack(webpackConfig)
-    app.use(webpackDevMiddleware(compiler))
-    app.use(webpackHotMiddleware(compiler))
+    webpackConfig.mode = 'development'
+    webpackConfig.entry.push('webpack-hot-middleware/client')
+
+    const compiler = require('webpack')(webpackConfig)
+    app.use(require('webpack-dev-middleware')(compiler))
+    app.use(require('webpack-hot-middleware')(compiler))
 } else { // for Production. Should already be compiled
     app.use(express.static(path.join(__dirname, '../public'))); // public folder
 }

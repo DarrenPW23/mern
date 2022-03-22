@@ -21,7 +21,7 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    (process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader),
                     "css-loader",
                     "sass-loader"
                 ],
@@ -34,9 +34,13 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        extensions: ['.js', '.jsx', '.scss', '.css'],
+    },
     devServer: {
         port: process.env.PORT || 3010,
         watchContentBase: true,
+        historyApiFallback: true,
         contentBase: path.resolve(__dirname, './client')
     },
     plugins: [
